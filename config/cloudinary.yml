@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dbpxkntme
+  api_key: '835284476464776'
+  api_secret: "-JYepXZEcDXLY8DvSOU0ALPPGuQ"
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dbpxkntme
+  api_key: '835284476464776'
+  api_secret: "-JYepXZEcDXLY8DvSOU0ALPPGuQ"
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dbpxkntme
+  api_key: '835284476464776'
+  api_secret: "-JYepXZEcDXLY8DvSOU0ALPPGuQ"
+  enhance_image_tag: true
+  static_file_support: false

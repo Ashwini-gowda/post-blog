@@ -1,0 +1,80 @@
+<div class="wrapper">
+  <div class="title">
+    <h1>Live blog with Ruby </h1>
+    <p>New posts will be displayed</p>    
+  </div>
+  <div class="container">
+    <br>
+    <%= link_to "New Post", new_post_path, class: "btn btn-sm btn-primary" %>
+    <br>
+  </div>
+  <div class="posts" id="post_section">
+    <% @posts.each do |post| %>
+      <br/>
+      <div class="abs">
+        <div class="box">
+          <div class="abc">
+            <div class="pag">
+              <div class="img">
+                <div class="body-trunc">
+
+                  <%= image_tag(post.media, class:'img-fluid img-responsive') %>
+                </div>
+              </div>
+              <div class="body-trunc">
+                <label>Title: &nbsp&nbsp <%= post.title %></label>
+              </div>
+              <div class="body-trunc">
+              <label>Author:&nbsp&nbsp<%= post.author %></label>
+              </div>
+              <div class="text-justify">
+              <label>&nbspPost content :
+              <div class="body-trunc">
+                <div class="hidden" id="fulltext_<%= post.id %>">
+                 <%= post.body %>
+                  <div class="seeless text-success" data-id="<%= post.id %>">Read less</div>
+                 </div>
+                
+                
+                <div id="truncate_<%= post.id %>">
+                  <%= truncate(post.body, length: 300) %>
+                  <% if post.body.size > 300 %>
+                  <div class="seemore text-success" data-id="<%= post.id %>" >Read more</div>
+                  <% end %>
+                </div>
+              </div>
+              </label>
+              </div>
+              <%= link_to 'Edit', edit_post_path(post), data: { confirm: "Are you sure?" } %> 
+              <%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class:"button is-danger float-lg-right" %>            
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="pagination justify-content-center">
+      <div class="pagination pagination-lg">
+        <%= will_paginate @posts %> 
+      </div>
+    </div>
+  </div>       
+</div>
+
+<script type="text/javascript">
+
+  $(".seemore").click(function(){
+    post_id = $(this).data("id");
+    $("#truncate_"+post_id).addClass("hidden");
+    $("#fulltext_"+post_id).removeClass("hidden");
+  });
+
+  $(".seeless").click(function(){
+    post_id = $(this).data("id");
+    $("#truncate_"+post_id).removeClass("hidden");
+    $("#fulltext_"+post_id).addClass("hidden");
+  });
+  
+</script>
+
+    

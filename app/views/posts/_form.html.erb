@@ -1,0 +1,14 @@
+</div>
+<div class="controller">
+  <%= simple_form_for @post do |f| %>
+    <div class="form-inputs justify-content-center col-sm-10  ">
+      <%= f.input :title %>
+      <%= f.input :body, as: :text  %>
+      <%= f.input :author %>
+      <%= f.input :media %>
+    </div>
+    <div class="col-md-4 col-sm-6 mx-auto">
+      <%= f.button :submit, class: "btn btn-primary btn-block" %>
+    </div>
+  <% end %>
+</div>
